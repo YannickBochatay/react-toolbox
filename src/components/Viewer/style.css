@@ -1,0 +1,19 @@
+.div {
+  position:relative;
+}
+.zoomIn {
+  position:absolute;
+  top:5px;
+  left:5px;
+}
+.zoomOut {
+  position:absolute;
+  top:40px;
+  left:5px;
+}
+.svg {
+  background-color:#ddd;
+}
+.foreignObject {
+  border:1px solid gray;
+}

@@ -1,0 +1,21 @@
+.pageWrap {
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+}
+
+.background {
+  background: #1e4877;
+  background: linear-gradient(to bottom, #1e4877 0%, white 100%);
+}
+
+.container {
+  display:flex;
+  flex:1;
+}
+
+.sidebar {
+  overflow-y:auto;
+  color:white;
+  background: linear-gradient(to right, #1a1f25 0%,#567288 100%);
+}

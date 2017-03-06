@@ -1,0 +1,44 @@
+.threebounce {
+  border-radius: 100%;
+  display: inline-block;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  animation-fill-mode: both;
+}
+
+.threebounce1 {
+  composes:threebounce;
+  animation-delay: -0.32s;
+}
+
+.threebounce2 {
+  composes:threebounce;
+  animation-delay: -0.16s;
+}
+
+.threebounce3 {
+  composes:threebounce;
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+  }
+}
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.fadein {
+  -animation: fadein 2s;
+}

@@ -1,0 +1,8 @@
+.container {
+  position : relative;
+  cursor : crosshair;
+  display : inline-block;
+}
+.tooltip {
+  position : absolute;
+}
