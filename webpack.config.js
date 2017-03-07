@@ -3,7 +3,6 @@
 
 const webpack = require("webpack")
 const CleanPlugin = require("clean-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 const DashboardPlugin = require("webpack-dashboard/plugin")
 
@@ -17,8 +16,6 @@ const mode = JSON.stringify(process.env.NODE_ENV)
 const plugins = [
 
   new webpack.IgnorePlugin(/vertx/),
-
-  new ExtractTextPlugin("bundle.css"), // <=== where should content be piped
 
   new webpack.optimize.CommonsChunkPlugin({
     nam : "main", // Move dependencies to our main file
@@ -105,15 +102,18 @@ module.exports = {
   plugins,
 
   eslint : {
-
     fix : true,
-
     failOnError : production,
-
     failOnWarning : production
   },
 
   module : {
+
+    preLoaders : [{
+      test : /\.jsx?$/,
+      loaders : ["eslint"],
+      include : __dirname + "/src"
+    }],
 
     loaders : [
 
@@ -133,21 +133,21 @@ module.exports = {
       },
       {
         test : /\.css$/,
-        loader : ExtractTextPlugin.extract("style", "css"),
+        loader : "style!css",
         include : [path.join(__dirname, "node_modules")]
       },
       {
         test : /\.css$/,
-        loader : ExtractTextPlugin.extract("style", "css?modules!postcss"),
+        loader : "style!css?modules!postcss",
         include : [path.join(__dirname, "src")]
       },
       {
         test : /\.scss$/,
-        loader : ExtractTextPlugin.extract("style", "css!sass")
+        loader : "style!css!sass"
       },
       {
         test : /\.less$/,
-        loader : ExtractTextPlugin.extract("style", "css!less")
+        loader : "style!css!less"
       },
       {
         test : /\.html$/,

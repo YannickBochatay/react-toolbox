@@ -1,15 +1,15 @@
-import { injectReducers } from "store"
+export const STATE_PROPERTY = "clouds"
 
-const LAUNCH_ANIMATION = "clouds/LAUNCH_ANIMATION"
-const STOP_ANIMATION = "clouds/STOP_ANIMATION"
-const TOGGLE_ANIMATION = "clouds/TOGGLE_ANIMATION"
-const HIDE = "clouds/HIDE"
-const SHOW = "clouds/SHOW"
-const TOGGLE = "clouds/TOGGLE"
+const LAUNCH_ANIMATION = STATE_PROPERTY + "/LAUNCH_ANIMATION"
+const STOP_ANIMATION = STATE_PROPERTY + "/STOP_ANIMATION"
+const TOGGLE_ANIMATION = STATE_PROPERTY + "/TOGGLE_ANIMATION"
+const HIDE = STATE_PROPERTY + "/HIDE"
+const SHOW = STATE_PROPERTY + "/SHOW"
+const TOGGLE = STATE_PROPERTY + "/TOGGLE"
 
 const initialState = { display : false, animate : false }
 
-function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
 
   switch (action.type) {
 
@@ -44,42 +44,12 @@ function reducer(state = initialState, action) {
 
 }
 
-injectReducers({ clouds : reducer })
+export const launchCloudsAnimation = () => ({ type : LAUNCH_ANIMATION })
 
-export default reducer
+export const toggleCloudsAnimation = () => ({ type : TOGGLE_ANIMATION })
 
-export function launchCloudsAnimation() {
+export const showClouds = () => ({ type : SHOW })
 
-  return { type : LAUNCH_ANIMATION }
+export const hideClouds = () => ({ type : HIDE })
 
-}
-
-export function stopCloudsAnimation() {
-
-  return { type : STOP_ANIMATION }
-
-}
-
-export function toggleCloudsAnimation() {
-
-  return { type : TOGGLE_ANIMATION }
-
-}
-
-export function showClouds() {
-
-  return { type : SHOW }
-
-}
-
-export function hideClouds() {
-
-  return { type : HIDE }
-
-}
-
-export function toggleClouds() {
-
-  return { type : TOGGLE }
-
-}
+export const toggleClouds = () => ({ type : TOGGLE })

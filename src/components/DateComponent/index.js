@@ -7,6 +7,8 @@ import Row from "react-bootstrap/lib/Row"
 import Col from "react-bootstrap/lib/Col"
 
 import {
+  STATE_PROPERTY,
+  reducer,
   setHour,
   setMinute,
   setDate,
@@ -23,6 +25,16 @@ import {
   FormatSelect
 } from "./formfields"
 
+export {
+  STATE_PROPERTY,
+  reducer,
+  setHour,
+  setMinute,
+  setDate,
+  setInterval,
+  setTimezone,
+  setFormat
+}
 
 export class DateComponent extends Component {
 
@@ -131,7 +143,7 @@ DateComponent.defaultProps = {
 
 function mapStateToProps(state) {
 
-  const { set, interval, timezone, format } = state.dateComponent
+  const { set, interval, timezone, format } = state[STATE_PROPERTY]
 
   return { set, interval, timezone, format }
 

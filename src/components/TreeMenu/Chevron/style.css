@@ -1,6 +1,7 @@
 .chevron {
-  float:right;
-  margin-top:3px;
+  width:15px;
+  text-align:center;
+  font-size:8px;
 }
 
 .open {

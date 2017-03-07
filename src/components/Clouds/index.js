@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import nuageSRC from "./nuage.png"
 import $ from "jquery"
-import * as actions from "./ducks"
 import {
   PerspectiveCamera,
   Scene,
@@ -15,6 +14,18 @@ import {
   PlaneGeometry,
   WebGLRenderer
 } from "three"
+
+import { STATE_PROPERTY } from "./ducks"
+
+export {
+  STATE_PROPERTY,
+  reducer,
+  launchCloudsAnimation,
+  toggleCloudsAnimation,
+  showClouds,
+  hideClouds,
+  toggleClouds
+} from "./ducks"
 
 export class Clouds extends Component {
 
@@ -352,10 +363,10 @@ Clouds.defaultProps = { animate : false }
 
 function mapStateToProps(state) {
 
-  return { animate : state.clouds.animate }
+  const data = state[STATE_PROPERTY]
+
+  return { animate : data && data.animate }
 
 }
-
-export { actions }
 
 export default connect(mapStateToProps)(Clouds)

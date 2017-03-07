@@ -258,7 +258,9 @@ Drawer.defaultProps = {
 
 function mapStateToProps(state) {
 
-  return { isOpen : state[STATE_PROPERTY].isOpen }
+  const data = state[STATE_PROPERTY]
+
+  return { isOpen : data && data.isOpen }
 
 }
 

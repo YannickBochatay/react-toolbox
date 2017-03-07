@@ -24,7 +24,9 @@ DocumentTitle.propTypes = {
 
 function mapStateToProps(state, props) {
 
-  return { translated : state[INTL_PROPERTY].messages[props.title.toLowerCase()] || props.title }
+  const data = state[INTL_PROPERTY]
+
+  return { translated : (data && data.messages[props.title.toLowerCase()]) || props.title }
 
 }
 

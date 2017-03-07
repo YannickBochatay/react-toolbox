@@ -17,8 +17,8 @@ Icon.propTypes = {
 function mapStateToProps(state) {
 
   return {
-    open : state[STATE_PROPERTY].isOpen,
-    title : state[INTL_PROPERTY].messages["show menu"] || "show menu"
+    open : state[STATE_PROPERTY] && state[STATE_PROPERTY].isOpen,
+    title : state[INTL_PROPERTY] && state[INTL_PROPERTY].messages["show menu"] || "show menu"
   }
 
 }

@@ -1,6 +1,5 @@
 import localForage from "localforage"
 import moment from "moment"
-import config from "config"
 
 export const STATE_PROPERTY = "intl"
 
@@ -68,7 +67,7 @@ export const getLocaleFromForage = () => dispatch => {
     else throw new Error(locale + " : unknown locale")
 
   })
-  .catch(() => { dispatch(setLocale(config.locale)) })
+  .catch(() => { dispatch(setLocale("fr")) })
 
 }
 

@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import Switch from "rc-switch"
-import { toggleClouds } from "../ducks"
+import { STATE_PROPERTY, toggleClouds } from "../ducks"
 import Intl from "components/Intl"
 import classNames from "./style.css"
 
@@ -31,7 +31,7 @@ SwitchClouds.propTypes = {
   className : PropTypes.string
 }
 
-const mapStateToProps = state => ({ checked : state.clouds.display })
+const mapStateToProps = state => ({ checked : state[STATE_PROPERTY] && state[STATE_PROPERTY].display })
 
 const mapDispatchToProps = dispatch => ({ onChange : () => dispatch(toggleClouds()) })
 

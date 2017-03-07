@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react"
-import Spinner from "components/SpinKit"
+import Spinner from "components/Spinner"
 import Alert from "react-bootstrap/lib/Alert"
 import Intl from "components/Intl"
 import classNames from "./style.css"
@@ -74,12 +74,7 @@ class Image extends React.PureComponent {
           { ...rest }
           className={ classNames.divSpinner + (className ? " " + className : "") }
         >
-          <Spinner
-            spinnerName={ "wandering-cubes" }
-            noFadeIn
-            color={ spinnerColor }
-            className={ classNames.spinner }
-          />
+          <Spinner color={ spinnerColor } className={ classNames.spinner }/>
         </div>
       )
 

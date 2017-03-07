@@ -8,10 +8,6 @@
   background-color:#263238;
 }
 
-@media (min-width: 992px) {
-
-  .sub {
-    padding-left:22px;
-  }
-
+.sub {
+  padding-left:22px;
 }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from "react"
 import NotificationSystem from "react-notification-system"
 import { connect } from "react-redux"
+import { STATE_PROPERTY } from "./ducks"
 export { reducer, STATE_PROPERTY, addNotification, removeNotification } from "./ducks"
 
 
@@ -36,7 +37,9 @@ NotifSystem.propTypes = { notifs : PropTypes.object }
 
 function mapStateToProps(state) {
 
-  return { notifs : state.notifications }
+  const notifs = state[STATE_PROPERTY]
+
+  return { notifs }
 
 }
 

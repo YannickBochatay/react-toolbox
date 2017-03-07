@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from "react"
 import JSYGCropAndResize from "jsyg-cropandresize"
+import "jsyg-editor/JSYG.Editor.css"
 
 class CropImage extends Component {
 

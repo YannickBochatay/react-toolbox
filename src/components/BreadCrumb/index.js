@@ -37,7 +37,9 @@ BreadCrumb.propTypes = {
 
 function mapStateToProps(state) {
 
-  return { path : state.routing.locationBeforeTransitions.pathname }
+  const data = state.routing
+
+  return { path : data && data.locationBeforeTransitions.pathname }
 
 }
 

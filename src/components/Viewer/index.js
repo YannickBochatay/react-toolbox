@@ -5,8 +5,7 @@ import ZoomAndPan from "jsyg-zoomandpan"
 import "jsyg-zoomandpan/JSYG.ZoomAndPan.css"
 
 import classNames from "./style.css"
-import ZoomInIcon from "react-icons/lib/md/zoom-in"
-import ZoomOutIcon from "react-icons/lib/md/zoom-out"
+import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import Button from "react-bootstrap/lib/Button"
 
 
@@ -118,7 +117,7 @@ export default class Viewer extends Component {
           onClick={ zoomIn }
           className={ classNames.zoomIn }
         >
-          <ZoomInIcon size={ 20 }/>
+          <Glyphicon glyph="zoom-in"/>
         </Button>
 
         <Button
@@ -127,7 +126,7 @@ export default class Viewer extends Component {
           onClick={ zoomOut }
           className={ classNames.zoomOut }
         >
-          <ZoomOutIcon size={ 20 }/>
+          <Glyphicon glyph="zoom-out"/>
         </Button>
 
       </div>

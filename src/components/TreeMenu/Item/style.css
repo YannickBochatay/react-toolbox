@@ -1,5 +1,7 @@
 .link, .link:visited {
-  display:block;
+  display:flex;
+  padding:10px;
+  align-items:center;
 }
 
 .link:hover, .link:active, .link:focus {
@@ -32,5 +34,9 @@
 
 .icon {
   width:20px;
-  display:inline-block;
+  text-align:left;
+}
+
+.label {
+  flex:1;
 }

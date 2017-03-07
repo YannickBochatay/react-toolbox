@@ -72,11 +72,15 @@ export default class Item extends Component {
 
   createSpanIcon() {
 
-    return (
-      <span className={ classNames.icon }>
-        { this.props.icon }
-      </span>
-    )
+    const { icon } = this.props
+
+    if (icon && typeof icon === "object") {
+
+      const className = classNames.icon + (icon.props.className ? " " + icon.props.className : "")
+
+      return React.cloneElement(icon, { className })
+
+    } else return <span className={ classNames.icon }>{ icon }</span>
 
   }
 
@@ -116,7 +120,7 @@ export default class Item extends Component {
 
     if (link) {
 
-      if (link.indexOf("/public/") != -1) {
+      if (link.indexOf("http") === 0) {
         return (
           <a href={ link } className={ this.getClassNameLink() } onClick={ onClick }>
             { spanIcon } { label }
@@ -151,16 +155,16 @@ export default class Item extends Component {
 
     if (link) {
 
-      if (link.indexOf("/public/") != -1) {
+      if (link.indexOf("/public/") !== -1) {
         return (
           <a href={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
-            { chevron } { spanIcon } { label }
+            { spanIcon } { label } { chevron }
           </a>
         )
       } else {
         return (
           <Link to={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
-            { chevron } { spanIcon } { label }
+            { spanIcon } { label } { chevron }
           </Link>
         )
       }
@@ -169,7 +173,7 @@ export default class Item extends Component {
 
       return (
         <span role="button" onClick={ this.handleClick } className={ this.getClassNameLink() }>
-          { chevron } { spanIcon } { label }
+          { spanIcon } { label } { chevron }
         </span>
       )
 

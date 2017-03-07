@@ -76,9 +76,11 @@ FullScreenIcon.propTypes = {
 
 function mapStateToProps(state) {
 
+  const data = state[INTL_PROPERTY]
+
   return {
-    title : state[INTL_PROPERTY].messages.fullscreen || "fullscreen",
-    titleExit : state[INTL_PROPERTY].messages["exit fullscreen"] || "exit fullscreen"
+    title : (data && data.messages.fullscreen) || "fullscreen",
+    titleExit : (data && data.messages["exit fullscreen"]) || "exit fullscreen"
   }
 
 }

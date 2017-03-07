@@ -1,14 +1,13 @@
-import { injectReducers } from "store"
 import Immutable from "immutable"
 
-const prefixe = "components/date/edit/"
+export const STATE_PROPERTY = "components/date/edit/"
 
-const SET_DATE = prefixe + "SET_DATE"
-const SET_HOUR = prefixe + "SET_HOUR"
-const SET_MINUTE = prefixe + "SET_MINUTE"
-const SET_INTERVAL = prefixe + "SET_INTERVAL"
-const SET_TIMEZONE = prefixe + "SET_TIMEZONE"
-const SET_FORMAT = prefixe + "SET_FORMAT"
+const SET_DATE = STATE_PROPERTY + "/SET_DATE"
+const SET_HOUR = STATE_PROPERTY + "/SET_HOUR"
+const SET_MINUTE = STATE_PROPERTY + "/SET_MINUTE"
+const SET_INTERVAL = STATE_PROPERTY + "/SET_INTERVAL"
+const SET_TIMEZONE = STATE_PROPERTY + "/SET_TIMEZONE"
+const SET_FORMAT = STATE_PROPERTY + "/SET_FORMAT"
 
 
 const initialState = {
@@ -21,7 +20,7 @@ const initialState = {
   format : "DD/MM/YYYY HH:mm:ss"
 }
 
-function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
 
   const imState = Immutable.fromJS(state)
 
@@ -57,10 +56,6 @@ function reducer(state = initialState, action) {
   }
 
 }
-
-injectReducers({ dateComponent : reducer })
-
-export default reducer
 
 
 export const setDate = date => ({ type : SET_DATE, date })

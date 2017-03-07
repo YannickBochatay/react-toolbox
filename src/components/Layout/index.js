@@ -1,88 +1,89 @@
-import React, { PropTypes } from "react"
+import React, { Component, PropTypes } from "react"
+import { hideClouds } from "components/Clouds/ducks"
 import classNames from "./style.css"
+import { connect } from "react-redux"
+import DocumentTitle from "components/DocumentTitle/"
 import Scrollbar from "components/Scrollbar"
-import Header from "./Header"
-import MainArea from "./MainArea"
-import Drawer from "components/Drawer"
 
-const Main = ({
-  children,
-  header,
-  drawer,
-  sidebar,
-  sidebarRight,
-  sidebarWidth,
-  sidebarRightWidth,
-  className,
-  ...rest
-}) => {
 
-  for (const n in Main.propTypes) delete rest[n]
-  delete rest.dispatch
+class Main extends Component {
 
-  let drawerMenu = null
+  componentDidMount() {
 
-  if (drawer) {
-    drawerMenu = (
-      <Drawer pageWrapId="pageWrap" outerContainerId="outerContainer">
-        { drawer }
-      </Drawer>
-    )
+    const { onMount } = this.props
+
+    if (onMount) onMount()
+
   }
 
-  let sidebarMenu = null
+  render() {
 
-  if (sidebar) {
-    sidebarMenu = (
-      <Scrollbar className={ classNames.sidebar } tag="aside" style={ { minWidth : sidebarWidth } }>
-        { sidebar }
-      </Scrollbar>
-    )
-  }
+    const { children, sidebar, sidebarRight, sidebarWidth, sidebarRightWidth, title, transparent, className, ...rest } = this.props
 
-  let sidebarRightMenu = null
+    delete rest.onMount
 
-  if (sidebarRight) {
-    sidebarRightMenu = (
-      <Scrollbar className={ classNames.sidebar } tag="aside" style={ { minWidth : sidebarRightWidth } }>
-        { sidebarRight }
-      </Scrollbar>
-    )
-  }
+    let rightBar = null
 
-  return (
-    <div id="outerContainer">
-      { drawerMenu }
-      <div className={ classNames.pageWrap + " " + classNames.background } id="pageWrap">
-        <Header>{ header }</Header>
-        <div className={ classNames.container + (className ? " " + className : "") }>
-          { sidebarMenu }
-          <MainArea>
+    if (sidebarRight) {
+
+      rightBar = (
+        <Scrollbar className={ classNames.sidebar } tag="aside" style={ { width : sidebarRightWidth } }>
+          { sidebarRight }
+        </Scrollbar>
+      )
+
+    }
+
+    return (
+      <DocumentTitle title={ title || "" }>
+
+        <div { ...rest } className={ classNames.container + (className ? " " + className : "") /* + " animated zoomIn" */ }>
+
+          <Scrollbar className={ classNames.sidebar } tag="aside" style={ { width : sidebarWidth } }>
+            { sidebar }
+          </Scrollbar>
+
+          <div className={ transparent ? classNames.mainTransparent : classNames.main }>
             { children }
-          </MainArea>
-          { sidebarRightMenu }
+          </div>
+
+          { rightBar }
+
         </div>
-      </div>
-    </div>
-  )
+
+      </DocumentTitle>
+    )
+
+  }
 
 }
 
 Main.propTypes = {
-  header : PropTypes.node,
-  drawer : PropTypes.node,
   sidebar : PropTypes.node,
   sidebarWidth : PropTypes.number,
   sidebarRight : PropTypes.node,
   sidebarRightWidth : PropTypes.number,
+  onMount : PropTypes.func,
   children : PropTypes.node,
-  contentTitle : PropTypes.string,
+  title : PropTypes.string,
+  transparent : PropTypes.bool,
   className : PropTypes.string
 }
 
 Main.defaultProps = {
-  sidebarWidth : 260,
-  sidebarRightWidth : 260
+  sidebarWidth : 230,
+  sidebarRightWidth : 230
 }
 
-export default Main
+
+const mapDispatchToProps = (dispatch) => ({
+
+  onMount() {
+
+    dispatch(hideClouds())
+
+  }
+})
+
+export default connect(null, mapDispatchToProps)(Main)
+

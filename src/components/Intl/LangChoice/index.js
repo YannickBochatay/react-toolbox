@@ -39,7 +39,9 @@ LangChoice.propTypes = {
 
 function mapStateToProps(state) {
 
-  return { value : state[INTL_PROPERTY].locale }
+  const data = state[INTL_PROPERTY]
+
+  return { value : data && data.locale }
 
 }
 
