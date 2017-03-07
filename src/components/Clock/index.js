@@ -1,8 +1,16 @@
 import React, { Component, PropTypes } from "react"
 import moment from "moment"
 import "moment-timezone"
-import classNames from "./style.css"
 
+const styles = {
+  div : {
+    margin : 2,
+    padding : "5px 10px",
+    backgroundColor : "rgba(0, 0, 0, 0.1)",
+    overflow : "hidden",
+    textOverflow : "ellipsis"
+  }
+}
 
 export class Clock extends Component {
 
@@ -48,16 +56,12 @@ export class Clock extends Component {
 
   render() {
 
-    let className = classNames.div
+    const { style, ...rest } = this.props
 
-    if (this.props.className) className += " " + this.props.className
-
-    const props = { ...this.props }
-
-    delete props.timezone
+    delete rest.timezone
 
     return (
-      <div { ...props } className={ className }>
+      <div { ...rest } style={ { ...styles.div, ...style } }>
         <strong>{ this.props.timezone }</strong>
         <span className="badge pull-right">{ this.state.offset }</span>
         <p>
@@ -72,7 +76,7 @@ export class Clock extends Component {
 
 Clock.propTypes = {
   timezone : PropTypes.string.isRequired,
-  className : PropTypes.string
+  style : PropTypes.object
 }
 
 Clock.defaultProps = { timezone : "GMT" }

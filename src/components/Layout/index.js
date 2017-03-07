@@ -1,12 +1,29 @@
 import React, { Component, PropTypes } from "react"
-import { hideClouds } from "components/Clouds/ducks"
-import classNames from "./style.css"
-import { connect } from "react-redux"
 import DocumentTitle from "components/DocumentTitle/"
 import Scrollbar from "components/Scrollbar"
 
 
-class Main extends Component {
+const styles = {
+  container : {
+    display : "flex",
+    flex : 1
+  },
+  sidebar : {
+    overflowY : "auto",
+    color : "white",
+    background : "#263238"
+  },
+  main : {
+    flex : 1,
+    overflowY : "auto",
+    padding : "5px 20px 20px 20px",
+    margin : "0 1% 1% 1%",
+    backgroundColor : "rgba(255, 255, 255, 0.9)",
+    borderRadius : 3
+  }
+}
+
+export default class Main extends Component {
 
   componentDidMount() {
 
@@ -18,7 +35,7 @@ class Main extends Component {
 
   render() {
 
-    const { children, sidebar, sidebarRight, sidebarWidth, sidebarRightWidth, title, transparent, className, ...rest } = this.props
+    const { children, sidebar, sidebarRight, sidebarWidth, sidebarRightWidth, title, style, ...rest } = this.props
 
     delete rest.onMount
 
@@ -37,13 +54,13 @@ class Main extends Component {
     return (
       <DocumentTitle title={ title || "" }>
 
-        <div { ...rest } className={ classNames.container + (className ? " " + className : "") /* + " animated zoomIn" */ }>
+        <div { ...rest } style={ { ...styles.container, ...style } }>
 
-          <Scrollbar className={ classNames.sidebar } tag="aside" style={ { width : sidebarWidth } }>
+          <Scrollbar tag="aside" style={ { ...styles.sidebar, width : sidebarWidth } }>
             { sidebar }
           </Scrollbar>
 
-          <div className={ transparent ? classNames.mainTransparent : classNames.main }>
+          <div style={ styles.main }>
             { children }
           </div>
 
@@ -66,24 +83,11 @@ Main.propTypes = {
   onMount : PropTypes.func,
   children : PropTypes.node,
   title : PropTypes.string,
-  transparent : PropTypes.bool,
-  className : PropTypes.string
+  style : PropTypes.object
 }
 
 Main.defaultProps = {
   sidebarWidth : 230,
   sidebarRightWidth : 230
 }
-
-
-const mapDispatchToProps = (dispatch) => ({
-
-  onMount() {
-
-    dispatch(hideClouds())
-
-  }
-})
-
-export default connect(null, mapDispatchToProps)(Main)
 

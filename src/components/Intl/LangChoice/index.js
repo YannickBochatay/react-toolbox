@@ -2,9 +2,19 @@ import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import locales from "locales"
 import Select from "react-select"
-import classNames from "./style.css"
 import Intl from "components/Intl"
 import { STATE_PROPERTY as INTL_PROPERTY, setLocale } from "components/Intl/ducks"
+
+const styles = {
+  flag : {
+    width : 25,
+    marginRight : 10
+  },
+  select : {
+    textAlign : "left",
+    width : 150
+  }
+}
 
 const options = Object.keys(locales).map(locale => ({
   value : locale,
@@ -14,18 +24,18 @@ const options = Object.keys(locales).map(locale => ({
 
 const renderOption = option => (
   <span>
-    <img src={ option.icon } className={ classNames.flag } />
+    <img src={ option.icon } style={ styles.flag } />
     <Intl text={ option.label } ucfirst/>
   </span>
 )
 
-export const LangChoice = ({ value, onChange, className }) => (
+export const LangChoice = ({ value, onChange, style }) => (
   <Select
     value={ value }
     onChange={ onChange }
     clearable={ false }
     options={ options }
-    className={ classNames.select + (className ? " " + className : "") }
+    style={ { ...styles.select, ...style } }
     optionRenderer={ renderOption }
     valueRenderer={ renderOption }
   />
@@ -34,7 +44,7 @@ export const LangChoice = ({ value, onChange, className }) => (
 LangChoice.propTypes = {
   value : PropTypes.string,
   onChange : PropTypes.func,
-  className : PropTypes.string
+  style : PropTypes.object
 }
 
 function mapStateToProps(state) {

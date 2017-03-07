@@ -3,20 +3,29 @@ import { connect } from "react-redux"
 import Switch from "rc-switch"
 import { STATE_PROPERTY, toggleClouds } from "../ducks"
 import Intl from "components/Intl"
-import classNames from "./style.css"
 
-const SwitchClouds = ({ onChange, checked, className, ...rest }) => {
+
+const styles = {
+  div : {
+    color : "white"
+  },
+  switch : {
+    marginRight : "10px"
+  }
+}
+
+const SwitchClouds = ({ onChange, checked, style, ...rest }) => {
 
   delete rest.dispatch
 
   return (
-    <div { ...rest } className={ classNames.div + (className ? " " + className : "") }>
+    <div { ...rest } style={ { ...styles.div, ...style } }>
 
       <Switch
         onChange={ onChange }
         checked={ checked }
         title="Animation des nuages"
-        className={ classNames.switch }
+        style={ styles.switch }
       />
 
       <Intl ucfirst>clouds animation</Intl>
@@ -28,7 +37,7 @@ const SwitchClouds = ({ onChange, checked, className, ...rest }) => {
 SwitchClouds.propTypes = {
   onChange : PropTypes.func,
   checked : PropTypes.bool,
-  className : PropTypes.string
+  style : PropTypes.object
 }
 
 const mapStateToProps = state => ({ checked : state[STATE_PROPERTY] && state[STATE_PROPERTY].display })

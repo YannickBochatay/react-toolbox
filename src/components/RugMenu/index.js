@@ -4,7 +4,12 @@ import throttle from "lodash/throttle"
 import Nav from "react-bootstrap/lib/Nav"
 import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import NavDropdown from "react-bootstrap/lib/NavDropdown"
-import classNames from "./style.css"
+
+const styles = {
+  kebab : {
+    paddingRight : 120
+  }
+}
 
 export default class RugMenu extends Component {
 
@@ -86,7 +91,7 @@ export default class RugMenu extends Component {
   render() {
 
     const { menuContainerWidth, elementWidths } = this.state
-    const { children, className, ...rest } = this.props
+    const { children, ...rest } = this.props
 
     let menuItems = []
     let kebabMenuItems = []
@@ -118,7 +123,7 @@ export default class RugMenu extends Component {
               ref={ node => this.kebabMenu = node }
               title={ <Glyphicon glyph="option-vertical"/> }
               id="nav-dropdown"
-              className={ classNames.kebab }
+              style={ styles }
               noCaret
             >
               { kebabMenuItems }
@@ -134,7 +139,6 @@ export default class RugMenu extends Component {
     return (
       <Nav
         bsStyle="tabs"
-        className={ classNames.nav + (className ? " " + className : "") }
         { ...rest }
       >
         { menuItems }
@@ -147,6 +151,5 @@ export default class RugMenu extends Component {
 }
 
 RugMenu.propTypes = {
-  children : PropTypes.node,
-  className : PropTypes.string
+  children : PropTypes.node
 }

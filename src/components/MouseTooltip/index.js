@@ -1,7 +1,16 @@
 import React, { PropTypes } from "react"
 import Tooltip from "react-bootstrap/lib/Tooltip"
-import classNames from "./style.css"
 import { getCursorPos } from "jsyg-utils"
+
+const styles = {
+  div : {
+    position : "relative",
+    overflow : "visible",
+  },
+  tooltip : {
+    position : "absolute"
+  }
+}
 
 export default class MouseTooltip extends React.Component {
 
@@ -50,11 +59,12 @@ export default class MouseTooltip extends React.Component {
 
   render() {
 
-    const { placement, className, children, content, offsetX, offsetY, ...rest } = this.props
+    const { placement, style, children, content, offsetX, offsetY, ...rest } = this.props
 
     delete rest.onMove
 
-    const style = {
+    const tooltipStyle = {
+      ...styles.tooltip,
       left : this.state.x + 3 + offsetX,
       top : this.state.y - 12 + offsetY
     }
@@ -66,8 +76,8 @@ export default class MouseTooltip extends React.Component {
       tooltip = (
         <Tooltip
           placement={ placement }
-          className={ "in " + classNames.tooltip }
-          style={ style }
+          className="in"
+          style={ tooltipStyle }
           id={ this.id }
         >
         { content }
@@ -79,7 +89,7 @@ export default class MouseTooltip extends React.Component {
     return (
       <div
         { ...rest }
-        className={ classNames.div + (className ? " " + className : "") }
+        style={ { ...styles.div, ...style } }
         ref={ node => this.container = node }
         onMouseMove={ this.handleMove }
         onMouseOver={ this.handleMouseOver }
@@ -95,7 +105,7 @@ export default class MouseTooltip extends React.Component {
 
 MouseTooltip.propTypes = {
   placement : PropTypes.oneOf(["top", "right", "bottom", "left"]),
-  className : PropTypes.string,
+  style : PropTypes.object,
   children : PropTypes.node,
   onMove : PropTypes.func,
   content : PropTypes.node.isRequired,

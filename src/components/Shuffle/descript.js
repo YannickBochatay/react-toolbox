@@ -1,6 +1,14 @@
 import React, { Component } from "react"
 import Shuffle from "react-shuffle"
-import classNames from "./style.css"
+
+const styles = {
+    item : {
+    display : "inline-block",
+    padding : 20,
+    margin : 2,
+    backgroundColor : "#ddd"
+  }
+}
 
 function shuffle(array) {
 
@@ -85,7 +93,7 @@ class ShuffleExample extends Component {
         &nbsp;&nbsp;
         <button onClick={ this.handleClick }>Shuffle</button>
         <Shuffle>
-          { this.state.items.map(item => <span key={ item } className={ classNames.item }>{ item }</span>) }
+          { this.state.items.map(item => <span key={ item } style={ styles.item }>{ item }</span>) }
         </Shuffle>
       </div>
     )

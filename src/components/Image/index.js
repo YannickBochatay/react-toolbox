@@ -2,7 +2,22 @@ import React, { PropTypes } from "react"
 import Spinner from "components/Spinner"
 import Alert from "react-bootstrap/lib/Alert"
 import Intl from "components/Intl"
-import classNames from "./style.css"
+
+const styles = {
+  divSpinner : {
+    display : "flex",
+    alignItems : "center",
+    justifyContent : "center"
+  },
+  spinner : {
+    margin : "auto"
+  },
+  alert : {
+    textOverflow : "ellipsis",
+    whiteSpace : "nowrap",
+    overflow : "hidden"
+  }
+}
 
 class Image extends React.PureComponent {
 
@@ -63,7 +78,7 @@ class Image extends React.PureComponent {
 
   render() {
 
-    const { className, src, alt, spinnerColor, svg, ...rest } = this.props
+    const { style, src, alt, spinnerColor, svg, ...rest } = this.props
 
     let component
 
@@ -72,9 +87,9 @@ class Image extends React.PureComponent {
       component = (
         <div
           { ...rest }
-          className={ classNames.divSpinner + (className ? " " + className : "") }
+          style={ { ...styles.divSpinner, ...style } }
         >
-          <Spinner color={ spinnerColor } className={ classNames.spinner }/>
+          <Spinner color={ spinnerColor } style={ styles.spinner }/>
         </div>
       )
 
@@ -95,7 +110,7 @@ class Image extends React.PureComponent {
           title={ alt || src }
           { ...rest }
           bsStyle="danger"
-          className={ classNames.alert + (className ? " " + className : "") }
+          style={ { ...styles.alert, ...style } }
         >
           <Intl text="unable to load image" ucfirst/>
           &nbsp;{ alt || src }
@@ -114,11 +129,11 @@ class Image extends React.PureComponent {
 
     } else if (svg) {
 
-      component = <image xlinkHref={ this.state.image } { ...{ className, alt } } { ...rest }/>
+      component = <image xlinkHref={ this.state.image } { ...{ style, alt } } { ...rest }/>
 
     } else {
 
-      component = <img src={ this.state.image } { ...{ className, alt } } { ...rest }/>
+      component = <img src={ this.state.image } { ...{ style, alt } } { ...rest }/>
 
     }
 
@@ -132,7 +147,7 @@ class Image extends React.PureComponent {
 Image.propTypes = {
   src : PropTypes.string,
   alt : PropTypes.string,
-  className : PropTypes.string,
+  style : PropTypes.object,
   spinnerColor : PropTypes.string,
   svg : PropTypes.bool
 }

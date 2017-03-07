@@ -1,7 +1,18 @@
 import React, { PropTypes } from "react"
 import Tooltip from "react-bootstrap/lib/Tooltip"
 import { getCursorPos } from "jsyg-utils"
-import classNames from "./style.css"
+
+const styles = {
+  container : {
+    position : "relative",
+    cursor : "crosshair",
+    display : "inline-block"
+  },
+  tooltip : {
+    position : "absolute"
+  }
+}
+
 
 class Pipette extends React.Component {
 
@@ -69,7 +80,7 @@ class Pipette extends React.Component {
 
   render() {
 
-    const { children, className, tooltip, ...rest } = this.props
+    const { children, style, tooltip, ...rest } = this.props
 
     delete rest.onMove
     delete rest.onClick
@@ -78,7 +89,8 @@ class Pipette extends React.Component {
 
     if (tooltip && this.state.displayTooltip) {
 
-      const style = {
+      const tooltipStyle = {
+        ...styles.tooltip,
         left : this.state.x + 8,
         top : this.state.y - 12
       }
@@ -86,8 +98,8 @@ class Pipette extends React.Component {
       tooltipComponent = (
         <Tooltip
           placement="right"
-          className={ "in " + classNames.tooltip }
-          style={ style }
+          className="in"
+          style={ tooltipStyle }
           id={ this.id }
         >
         { tooltip }
@@ -100,7 +112,7 @@ class Pipette extends React.Component {
       <div
         { ...rest }
         ref={ node => this.container = node }
-        className={ classNames.container + (className ? " " + className : "") }
+        style={ { ...styles.container, ...style } }
         onClick={ this.handleClick }
         onMouseMove={ this.handleMove }
         onMouseOver={ this.handleMouseOver }
@@ -119,7 +131,7 @@ Pipette.propTypes = {
   children : PropTypes.node,
   onMove : PropTypes.func,
   onClick : PropTypes.func,
-  className : PropTypes.string,
+  style : PropTypes.object,
   tooltip : PropTypes.string
 }
 

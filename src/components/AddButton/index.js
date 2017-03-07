@@ -3,8 +3,17 @@ import Button from "react-bootstrap/lib/Button"
 import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import OverlayTrigger from "react-bootstrap/lib/OverlayTrigger"
 import Tooltip from "react-bootstrap/lib/Tooltip"
-// import Ripples from "components/Ripples"
-import classNames from "./style.css"
+
+const styles = {
+  container : {
+    borderRadius : "50%",
+    boxShadow : "0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24)"
+  },
+  button : { borderRadius : "50%" },
+  normal : { padding : "10px 15px" },
+  small : { padding : "5px 9px" }
+}
+
 
 const AddButton = ({ children, bsStyle, size, ...rest }) => (
 
@@ -19,7 +28,7 @@ const AddButton = ({ children, bsStyle, size, ...rest }) => (
         </Tooltip>
       }
     >
-      <Button bsStyle={ bsStyle || "danger" } className={ classNames.button + " " + classNames[size] }>
+      <Button bsStyle={ bsStyle || "danger" } style={ { ...styles.button, ...styles[size] } }>
         <Glyphicon glyph="plus"/>
       </Button>
     </OverlayTrigger>
@@ -34,8 +43,6 @@ AddButton.propTypes = {
   size : PropTypes.oneOf(["normal", "small"])
 }
 
-AddButton.defaultProps = {
-  size : "normal"
-}
+AddButton.defaultProps = { size : "normal" }
 
 export default AddButton

@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import DocTitle from "react-document-title"
 import { STATE_PROPERTY as INTL_PROPERTY } from "components/Intl/ducks"
 
-const prefixe = "Métronome "
+const prefixe = "react-toolbox "
 
 export function DocumentTitle({ translated, children }) {
 

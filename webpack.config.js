@@ -124,12 +124,7 @@ module.exports = {
       {
         test : /\.jsx?$/,
         loader : "babel",
-        exclude : [path.join(__dirname, "node_modules")],
-        query : {
-          babelrc : false,
-          presets : ["react", "es2015"],
-          plugins : ["transform-object-rest-spread", "react-hot-loader/babel"]
-        }
+        exclude : [path.join(__dirname, "node_modules")]
       },
       {
         test : /\.css$/,

@@ -4,9 +4,30 @@ import isEqual from "lodash/fp/isEqual"
 import ZoomAndPan from "jsyg-zoomandpan"
 import "jsyg-zoomandpan/JSYG.ZoomAndPan.css"
 
-import classNames from "./style.css"
 import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import Button from "react-bootstrap/lib/Button"
+
+const styles = {
+  div : {
+    position : "relative"
+  },
+  zoomIn : {
+    position : "absolute",
+    top : 5,
+    left : 5
+  },
+  zoomOut : {
+    position : "absolute",
+    top : 40,
+    left : 5
+  },
+  svg : {
+    backgroundColor : "#ddd"
+  },
+  foreignObject : {
+    border : "1px solid gray"
+  }
+}
 
 
 export default class Viewer extends Component {
@@ -91,21 +112,26 @@ export default class Viewer extends Component {
 
     const { zoomIn, zoomOut } = this
 
-    const style = { width : this.props.width, height : this.props.height, ...this.props.style }
+    const style = {
+      ...styles.div,
+      width : this.props.width,
+      height : this.props.height,
+      ...this.props.style
+    }
 
     return (
 
-      <div { ...this.props } className={ classNames.div } style={ style }>
+      <div { ...this.props } style={ style }>
 
         <svg
           ref={ node => this.viewer = node }
           width={ this.props.width }
           height={ this.props.height }
           preserveAspectRatio="none"
-          className={ classNames.svg }
+          style={ styles.svg }
         >
 
-          <foreignObject width={ this.props.width } height={ this.props.height } className={ classNames.foreignObject }>
+          <foreignObject width={ this.props.width } height={ this.props.height } style={ styles.foreignObject }>
             { child }
           </foreignObject>
 
@@ -115,7 +141,7 @@ export default class Viewer extends Component {
           bsStyle="default"
           title="zoom in"
           onClick={ zoomIn }
-          className={ classNames.zoomIn }
+          style={ styles.zoomIn }
         >
           <Glyphicon glyph="zoom-in"/>
         </Button>
@@ -124,7 +150,7 @@ export default class Viewer extends Component {
           bsStyle="default"
           title="zoom out"
           onClick={ zoomOut }
-          className={ classNames.zoomOut }
+          style={ styles.zoomOut }
         >
           <Glyphicon glyph="zoom-out"/>
         </Button>
