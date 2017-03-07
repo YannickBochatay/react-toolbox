@@ -4,8 +4,6 @@
 const webpack = require("webpack")
 const CleanPlugin = require("clean-webpack-plugin")
 
-const DashboardPlugin = require("webpack-dashboard/plugin")
-
 const path = require("path")
 
 const autoprefixer = require("autoprefixer")
@@ -60,10 +58,6 @@ if (production) {
     })
   )
 
-} else {
-
-  plugins.push(new DashboardPlugin())
-
 }
 
 module.exports = {
@@ -75,13 +69,12 @@ module.exports = {
 
   output : {
     path : path.resolve(__dirname, "builds"),
-    filename : "bundle.js",
-    publicPath : "/builds/"
+    filename : "bundle.js"
   },
 
   debug : !production,
 
-  devtool : production ? false : "cheap-module-eval-source-map",
+  devtool : production ? false : "source-map", //cheap-module-eval-source-map",
 
   resolve : {
 

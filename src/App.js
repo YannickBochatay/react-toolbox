@@ -2,7 +2,9 @@ import React from "react"
 import { Provider } from "react-redux"
 import { Router, hashHistory } from "react-router"
 import { store } from "./store"
+import Main from "./components/Main"
 import "styles"
+
 
 const rootRoute = {
 
@@ -10,7 +12,7 @@ const rootRoute = {
 
     path : "/",
 
-    component : ({ children }) => children || <h1>Welcome to react-toolbox</h1>,
+    component : ({ children }) => children || Main,
 
     childRoutes : [
       require("./routes/catalog"),
