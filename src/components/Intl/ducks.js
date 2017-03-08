@@ -67,7 +67,11 @@ export const getLocaleFromForage = () => dispatch => {
     else throw new Error(locale + " : unknown locale")
 
   })
-  .catch(() => { dispatch(setLocale("fr")) })
+  .catch(() => {
+
+    dispatch(setLocale("fr"))
+
+  })
 
 }
 

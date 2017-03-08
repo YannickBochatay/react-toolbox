@@ -39,8 +39,10 @@ function mapStateToProps(state, props) {
   let message = intl && intl.messages[text]
 
   if (!message) {
+
     if (intl && intl.log) console.warn(`"${text}" not found for locale ${intl.locale}`)
     message = text
+
   }
 
   if (props.ucfirst) message = ucfirst(message)

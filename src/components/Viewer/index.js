@@ -8,9 +8,7 @@ import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import Button from "react-bootstrap/lib/Button"
 
 const styles = {
-  div : {
-    position : "relative"
-  },
+  div : { position : "relative" },
   zoomIn : {
     position : "absolute",
     top : 5,
@@ -21,12 +19,8 @@ const styles = {
     top : 40,
     left : 5
   },
-  svg : {
-    backgroundColor : "#ddd"
-  },
-  foreignObject : {
-    border : "1px solid gray"
-  }
+  svg : { backgroundColor : "#ddd" },
+  foreignObject : { border : "1px solid gray" }
 }
 
 

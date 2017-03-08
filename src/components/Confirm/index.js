@@ -14,18 +14,21 @@ class Confirm extends Modal {
     this.handleCancel = this.handleCancel.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
+
   }
 
   handleCancel() {
 
     this.hide()
     this.props.onCancel()
+
   }
 
   handleConfirm() {
 
     this.hide()
     this.props.onConfirm()
+
   }
 
   handleKeyPress(e) {
@@ -34,7 +37,9 @@ class Confirm extends Modal {
 
     if (e.key === "Escape") this.handleCancel()
     else if (e.key === "Enter") {
+
       this.props.defaultChoice === "cancel" ? this.handleCancel() : this.handleConfirm()
+
     }
 
   }
@@ -42,11 +47,13 @@ class Confirm extends Modal {
   componentDidMount() {
 
     document.addEventListener("keydown", this.handleKeyPress)
+
   }
 
   componentWillUnmount() {
 
     document.addEventListener("keydown", this.handleKeyPress)
+
   }
 
   render() {

@@ -2,7 +2,7 @@ import React, { PropTypes } from "react"
 import Section from "../Section/"
 import Code from "components/Code"
 import Properties from "./Properties"
-import { getDisplayName } from "lib/react/utils"
+import { getDisplayName } from "lib/jsx-serializer"
 
 const Descript = ({ construct, description, state, path, externalLink, namedImport }) => {
 

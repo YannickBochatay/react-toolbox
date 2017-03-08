@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from "react"
 import Code from "components/Code"
 import Section from "../Section/"
-import { elmtToJSX } from "lib/react/utils"
+import { elmtToJSX } from "lib/jsx-serializer"
 import classNames from "./style.css"
 import Button from "react-bootstrap/lib/Button"
 import { ucfirst } from "jsyg-strutils"

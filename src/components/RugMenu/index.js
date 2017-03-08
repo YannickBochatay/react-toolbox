@@ -5,11 +5,7 @@ import Nav from "react-bootstrap/lib/Nav"
 import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import NavDropdown from "react-bootstrap/lib/NavDropdown"
 
-const styles = {
-  kebab : {
-    paddingRight : 120
-  }
-}
+const styles = { kebab : { paddingRight : 120 } }
 
 export default class RugMenu extends Component {
 
@@ -150,6 +146,4 @@ export default class RugMenu extends Component {
 
 }
 
-RugMenu.propTypes = {
-  children : PropTypes.node
-}
+RugMenu.propTypes = { children : PropTypes.node }

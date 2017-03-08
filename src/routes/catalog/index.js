@@ -2,13 +2,14 @@ import React, { PropTypes } from "react"
 import Descript from "./components/Descript"
 import State from "./components/State"
 import Main from "./components/Main"
+import { getDisplayName } from "lib/jsx-serializer"
 
 function createRoute(item) {
 
   const construct = item.construct || item.constructor
   const description = item.descript || item.description
   const link = item.link || item.externalLink
-  const name = (construct.displayName || construct.name).replace(/Connect\((\w+)\)/g, "$1")
+  const name = getDisplayName(construct)
 
   const Component = ({ children }) => (
     <Descript

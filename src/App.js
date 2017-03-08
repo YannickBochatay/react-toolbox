@@ -2,7 +2,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import { Router, hashHistory } from "react-router"
 import { store } from "./store"
-import Main from "./components/Main"
+import Welcome from "./components/Welcome"
 import "styles"
 
 
@@ -12,7 +12,7 @@ const rootRoute = {
 
     path : "/",
 
-    component : ({ children }) => children || Main,
+    component : ({ children }) => (children || <Welcome/>),
 
     childRoutes : [
       require("./routes/catalog"),

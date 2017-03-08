@@ -39,6 +39,8 @@ const plugins = [
   })
 ]
 
+const srcPath = path.resolve(__dirname, "src")
+
 if (production) {
 
   plugins.push(
@@ -69,12 +71,13 @@ module.exports = {
 
   output : {
     path : path.resolve(__dirname, "builds"),
-    filename : "bundle.js"
+    filename : "bundle.js",
+    publicPath : "builds"
   },
 
   debug : !production,
 
-  devtool : production ? false : "source-map", //cheap-module-eval-source-map",
+  devtool : production ? false : "cheap-module-eval-source-map",
 
   resolve : {
 
@@ -87,7 +90,7 @@ module.exports = {
     modulesDirectories : [
       "web_modules",
       "node_modules",
-      path.resolve(__dirname, "src")
+      srcPath
     ]
 
   },
@@ -102,10 +105,12 @@ module.exports = {
 
   module : {
 
+    noParse: /localforage\.js/,
+
     preLoaders : [{
       test : /\.jsx?$/,
       loaders : ["eslint"],
-      include : __dirname + "/src"
+      include : srcPath
     }],
 
     loaders : [
@@ -117,17 +122,17 @@ module.exports = {
       {
         test : /\.jsx?$/,
         loader : "babel",
-        exclude : [path.join(__dirname, "node_modules")]
+        include : srcPath
       },
       {
         test : /\.css$/,
         loader : "style!css",
-        include : [path.join(__dirname, "node_modules")]
+        include : path.resolve(__dirname, "node_modules")
       },
       {
         test : /\.css$/,
         loader : "style!css?modules!postcss",
-        include : [path.join(__dirname, "src")]
+        include : srcPath
       },
       {
         test : /\.scss$/,

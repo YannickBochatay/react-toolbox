@@ -17,6 +17,7 @@ const Spinner = ({ fadeIn, className, color, size, ...rest }) => {
       <div className={ classNames.threebounce3 } style={ style } />
     </div>
   )
+
 }
 
 Spinner.propTypes = {

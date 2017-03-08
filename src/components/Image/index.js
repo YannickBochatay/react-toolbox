@@ -9,9 +9,7 @@ const styles = {
     alignItems : "center",
     justifyContent : "center"
   },
-  spinner : {
-    margin : "auto"
-  },
+  spinner : { margin : "auto" },
   alert : {
     textOverflow : "ellipsis",
     whiteSpace : "nowrap",

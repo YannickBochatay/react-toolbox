@@ -121,17 +121,21 @@ export default class Item extends Component {
     if (link) {
 
       if (link.indexOf("http") === 0) {
+
         return (
           <a href={ link } className={ this.getClassNameLink() } onClick={ onClick }>
             { spanIcon } { label }
           </a>
         )
+
       } else {
+
         return (
           <Link to={ link } className={ this.getClassNameLink() } onClick={ onClick }>
             { spanIcon } { label }
           </Link>
         )
+
       }
 
     } else {
@@ -155,18 +159,22 @@ export default class Item extends Component {
 
     if (link) {
 
-      if (link.indexOf("/public/") !== -1) {
+      if (link.indexOf("http") === 0) {
+
         return (
           <a href={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
             { spanIcon } { label } { chevron }
           </a>
         )
+
       } else {
+
         return (
           <Link to={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
             { spanIcon } { label } { chevron }
           </Link>
         )
+
       }
 
     } else {
@@ -212,7 +220,7 @@ Item.propTypes = {
   onClick : PropTypes.func,
   link : PropTypes.string,
   label : PropTypes.string,
-  icon : PropTypes.element,
+  icon : PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   collapsed : PropTypes.bool,
   collapsible : PropTypes.bool,
   children : PropTypes.node,

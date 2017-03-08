@@ -23,14 +23,14 @@ module.exports = {
     Flags : () => (
       <div>
         {
-          flagIcons.map( (src, i) => (
+          flagIcons.map((src, i) => (
             <img
               src={ src }
               style={ { margin : 20, width : 80 } }
               key={ "flagIcon" + i }
               title={ "flag-icon-css/flags/4x3/" + keys[i].replace(/\.\//, "") }
             />
-          ) )
+          ))
         }
       </div>
     )

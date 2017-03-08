@@ -11,7 +11,8 @@ const styles = {
   sidebar : {
     overflowY : "auto",
     color : "white",
-    background : "#263238"
+    background : "#263238",
+    height : "100vh"
   },
   main : {
     flex : 1,
@@ -19,7 +20,8 @@ const styles = {
     padding : "5px 20px 20px 20px",
     margin : "0 1% 1% 1%",
     backgroundColor : "rgba(255, 255, 255, 0.9)",
-    borderRadius : 3
+    borderRadius : 3,
+    height : "100vh"
   }
 }
 
@@ -44,7 +46,7 @@ export default class Main extends Component {
     if (sidebarRight) {
 
       rightBar = (
-        <Scrollbar className={ classNames.sidebar } tag="aside" style={ { width : sidebarRightWidth } }>
+        <Scrollbar tag="aside" style={ { ...styles.sidebar, width : sidebarRightWidth } }>
           { sidebarRight }
         </Scrollbar>
       )

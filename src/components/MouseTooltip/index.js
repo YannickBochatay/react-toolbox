@@ -5,11 +5,9 @@ import { getCursorPos } from "jsyg-utils"
 const styles = {
   div : {
     position : "relative",
-    overflow : "visible",
+    overflow : "visible"
   },
-  tooltip : {
-    position : "absolute"
-  }
+  tooltip : { position : "absolute" }
 }
 
 export default class MouseTooltip extends React.Component {

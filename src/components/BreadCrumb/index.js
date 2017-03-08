@@ -6,7 +6,7 @@ export function BreadCrumb(props) {
 
   const rest = { ...props }
 
-  for (const n in this.constructor.propTypes) delete rest[n]
+  for (const n in BreadCrumb.propTypes) delete rest[n]
 
   const elmts = props.path.split(/\//)
 

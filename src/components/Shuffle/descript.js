@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Shuffle from "react-shuffle"
 
 const styles = {
-    item : {
+  item : {
     display : "inline-block",
     padding : 20,
     margin : 2,

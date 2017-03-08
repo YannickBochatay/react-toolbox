@@ -33,11 +33,13 @@ class Alert extends Modal {
   componentDidMount() {
 
     document.addEventListener("keydown", this.handleKeyPress)
+
   }
 
   componentWillUnmount() {
 
     document.addEventListener("keydown", this.handleKeyPress)
+
   }
 
   render() {

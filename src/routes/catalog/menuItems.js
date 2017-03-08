@@ -1,8 +1,5 @@
-import React from "react"
 import descriptions from "./descriptions"
-import Glyphicon from "react-bootstrap/lib/Glyphicon"
-import { getDisplayName } from "lib/react/utils"
-
+import { getDisplayName } from "lib/jsx-serializer"
 
 function getFirstState(states) {
 
@@ -23,7 +20,7 @@ function createItem(descript) {
   const item = {
     label : name,
     collapsed : true,
-    icon : <Glyphicon glyph="asterisk"/>,
+    icon : "•",
     link : link + firstState,
     items : []
   }
@@ -31,7 +28,7 @@ function createItem(descript) {
   for (const state in descript.states) {
 
     item.items.push({
-      icon : <Glyphicon glyph="menu-right" style={ { fontSize : 8 } }/>,
+      icon : "↳",
       label : state,
       link : link + state
     })

@@ -8,9 +8,7 @@ const styles = {
     cursor : "crosshair",
     display : "inline-block"
   },
-  tooltip : {
-    position : "absolute"
-  }
+  tooltip : { position : "absolute" }
 }
 
 

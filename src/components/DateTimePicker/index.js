@@ -9,7 +9,7 @@ import "bootstrap/js/collapse"
 import datetimepicker from "./bootstrap-datetimepicker.js"
 import "./styles.less"
 
-import { ucfirst } from "jsyg"
+import { ucfirst } from "jsyg-strutils"
 
 const defaults = {
 

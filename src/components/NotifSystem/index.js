@@ -13,11 +13,15 @@ export class NotifSystem extends Component {
     const notifs = this.props.notifs
 
     for (const n in oldNotifs) {
+
       if (!(n in notifs)) this.system.removeNotification(n)
+
     }
 
     for (const n in notifs) {
+
       if (!(n in oldNotifs)) this.system.addNotification(notifs[n])
+
     }
 
   }
