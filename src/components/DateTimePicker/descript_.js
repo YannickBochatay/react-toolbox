@@ -1,5 +1,5 @@
 import React from "react"
-import DateTimePicker from "components/DateTimePicker"
+import DateTimePicker from "../DateTimePicker"
 
 module.exports = {
 
@@ -7,7 +7,7 @@ module.exports = {
 
   construct : DateTimePicker,
 
-  path : "components/DateTimePicker",
+  path : "react-toolbox/lib/DateTimePicker",
 
   description : "sélectionneur de dates",
 

@@ -1,6 +1,6 @@
 import React from "react"
 import Tabs, { TabPane } from "./"
-import { addNotification } from "components/NotifSystem/ducks"
+import { addNotification } from "../NotifSystem/ducks"
 import { store } from "store"
 
 module.exports = {

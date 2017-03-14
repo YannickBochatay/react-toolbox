@@ -2,7 +2,7 @@ import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import Switch from "rc-switch"
 import { STATE_PROPERTY, toggleClouds } from "../ducks"
-import Intl from "components/Intl"
+import Intl from "../../Intl"
 
 
 const styles = {

@@ -8,9 +8,9 @@ module.exports = {
   construct : Notif,
 
   descript : `Système de notifications. Pour une notification qui doit apparaître sur toutes les pages,
-              on peut utiliser l'action addNotification du store (fichier components/NotifSystem/ducks)`,
+              on peut utiliser l'action addNotification du store (fichier react-toolbox/lib/NotifSystem)`,
 
-  path : "components/NotifSystem/Notif",
+  path : "react-toolbox/lib/NotifSystem/Notif",
 
   link : "https://github.com/igorprado/react-notification-system",
 

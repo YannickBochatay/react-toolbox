@@ -9,7 +9,7 @@ module.exports = {
 
   description : "Animation de nuages avec WebGL (ThreeJS)",
 
-  path : "components/Clouds",
+  path : "react-toolbox/lib/Clouds",
 
   states : {
 

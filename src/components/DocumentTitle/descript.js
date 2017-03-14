@@ -5,7 +5,7 @@ module.exports = {
 
   construct : DocumentTitle,
 
-  path : "components/DocumentTitle",
+  path : "react-toolbox/lib/DocumentTitle",
 
   states : { default : () => <DocumentTitle title="Hello"/> }
 }

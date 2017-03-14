@@ -2,8 +2,8 @@ import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import locales from "locales"
 import Select from "react-select"
-import Intl from "components/Intl"
-import { STATE_PROPERTY as INTL_PROPERTY, setLocale } from "components/Intl/ducks"
+import Intl from "../"
+import { STATE_PROPERTY as INTL_PROPERTY, setLocale } from "../ducks"
 
 const styles = {
   flag : {

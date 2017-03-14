@@ -1,10 +1,24 @@
 import React, { PropTypes } from "react"
-import classNames from "./style.css"
 
+const styles = {
+  chevron : {
+    width : 15,
+    textAlign : "center",
+    fontSize : 8
+  },
+  open : {
+    transition : "transform 0.3s",
+    transform : "rotate(90deg)"
+  },
+  closed : {
+    transition : "transform 0.3s",
+    transform : "rotate(0deg)"
+  }
+}
 
 export default function Chevron({ collapsed }) {
 
-  return <span className={ collapsed ? classNames.closed : classNames.open }>▶</span>
+  return <span style={ { ...styles.chevron, ...(collapsed ? styles.closed : styles.open) } }>▶</span>
 
 }
 

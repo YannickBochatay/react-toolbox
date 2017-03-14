@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import DocTitle from "react-document-title"
-import { STATE_PROPERTY as INTL_PROPERTY } from "components/Intl/ducks"
+import { STATE_PROPERTY as INTL_PROPERTY } from "../Intl/ducks"
 
 const prefixe = "react-toolbox "
 

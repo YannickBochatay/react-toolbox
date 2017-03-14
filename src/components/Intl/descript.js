@@ -5,7 +5,7 @@ module.exports = {
 
   construct : Intl,
 
-  path : "components/Intl",
+  path : "react-toolbox/lib/Intl",
 
   states : {
 

@@ -1,6 +1,16 @@
 import React, { Component, PropTypes } from "react"
 import Item from "./Item/"
-import classNames from "./style.css"
+
+
+const styles = {
+  ul : {
+    margin : 0,
+    padding : 0,
+    listStyleType : "none"
+  },
+  dark : { backgroundColor : "#263238" },
+  sub : { paddingLeft : 22 }
+}
 
 export default class TreeMenu extends Component {
 
@@ -32,7 +42,7 @@ export default class TreeMenu extends Component {
           collapsible
         >
 
-          <ul className={ classNames.ul + " " + classNames.sub }>
+          <ul style={ { ...styles.ul, ...styles.sub } }>
             { items.map(this.renderItem) }
           </ul>
 
@@ -59,18 +69,12 @@ export default class TreeMenu extends Component {
 
   render() {
 
-    const htmlProps = { ...this.props }
+    const { style, dark, ...rest } = this.props
 
-    for (const n in TreeMenu.propTypes) delete htmlProps[n]
-
-    let className = classNames.ul
-
-    if (this.props.dark) className += " " + classNames.dark
-
-    if (this.props.className) className += " " + this.props.className
+    for (const n in TreeMenu.propTypes) delete rest[n]
 
     return (
-      <ul { ...htmlProps } className={ className }>
+      <ul { ...rest } style={ { ...styles.ul, ...(dark ? styles.dark : null), ...style } }>
        { this.props.items.map(this.renderItem) }
       </ul>
     )

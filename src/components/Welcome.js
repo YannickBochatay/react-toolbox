@@ -1,5 +1,5 @@
 import React from "react"
-import Intl from "components/Intl/"
+import Intl from "./Intl/"
 import Button from "react-bootstrap/lib/Button"
 import { Link } from "react-router"
 

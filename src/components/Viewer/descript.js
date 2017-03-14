@@ -8,7 +8,7 @@ module.exports = {
 
   construct : Viewer,
 
-  path : "components/Viewer",
+  path : "react-toolbox/lib/Viewer",
 
   description : "composant Viewer",
 

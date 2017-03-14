@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react"
-import DocumentTitle from "components/DocumentTitle/"
-import Scrollbar from "components/Scrollbar"
+import DocumentTitle from "../DocumentTitle/"
+import Scrollbar from "../Scrollbar"
 
 
 const styles = {

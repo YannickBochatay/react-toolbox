@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react"
-import Spinner from "components/Spinner"
+import Spinner from "../Spinner"
 import Alert from "react-bootstrap/lib/Alert"
-import Intl from "components/Intl"
+import Intl from "../Intl"
 
 const styles = {
   divSpinner : {

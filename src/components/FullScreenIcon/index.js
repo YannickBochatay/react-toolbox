@@ -3,7 +3,7 @@ import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import $ from "jquery"
 import "jquery-fullscreen-plugin"
 import { connect } from "react-redux"
-import { STATE_PROPERTY as INTL_PROPERTY } from "components/Intl/ducks"
+import { STATE_PROPERTY as INTL_PROPERTY } from "../Intl/ducks"
 
 export class FullScreenIcon extends Component {
 

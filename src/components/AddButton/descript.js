@@ -7,7 +7,7 @@ module.exports = {
 
   construct : AddButton,
 
-  path : "components/AddButton",
+  path : "react-toolbox/lib/AddButton",
 
   description : "Simple Add Button (inspired by Material Design)",
 

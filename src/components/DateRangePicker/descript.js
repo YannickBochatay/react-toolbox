@@ -59,7 +59,7 @@ module.exports = {
 
   construct : DateRangePicker,
 
-  path : "components/DateRangePicker",
+  path : "react-toolbox/lib/DateRangePicker",
 
   link : "https://github.com/airbnb/react-dates",
 

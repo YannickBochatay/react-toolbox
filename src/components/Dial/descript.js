@@ -9,7 +9,7 @@ module.exports = {
 
   descript : "Cadrans",
 
-  path : "components/Dial",
+  path : "react-toolbox/lib/Dial",
 
   link : "http://anthonyterrien.com/knob/",
 

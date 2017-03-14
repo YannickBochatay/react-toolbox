@@ -9,7 +9,7 @@ module.exports = {
 
   construct : Clock,
 
-  path : "components/Clock",
+  path : "react-toolbox/lib/Clock",
 
   states : {
 

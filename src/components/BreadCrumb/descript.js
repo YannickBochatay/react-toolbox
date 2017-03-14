@@ -7,7 +7,7 @@ module.exports = {
 
   construct : BreadCrumb,
 
-  path : "components/BreadCrumb",
+  path : "react-toolbox/lib/BreadCrumb",
 
   description : "Fil d'ariane (aide à la navigation)",
 

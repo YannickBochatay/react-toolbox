@@ -1,11 +1,46 @@
 import React, { Component, PropTypes } from "react"
 import { Link } from "react-router"
 import Collapse from "react-bootstrap/lib/Collapse"
-
-import Intl from "components/Intl/"
-
+import Intl from "../../Intl"
 import Chevron from "../Chevron"
-import classNames from "./style.css"
+
+const styles = {
+
+  link : {
+    display : "flex",
+    padding : 10,
+    alignItems : "center",
+    textDecoration : "none"
+  },
+
+  light : { color : "#333" },
+
+  lightHover : {
+    color : "#333",
+    backgroundColor : "#F5F5F5",
+    textDecoration : "none"
+  },
+
+  dark : { color : "rgba(163,175,183,.9)" },
+
+  darkHover : {
+    color : "rgba(255,255,255,.8)",
+    backgroundColor : "#364248",
+    textDecoration : "none"
+  },
+
+  li : {
+    margin : 0,
+    padding : 0
+  },
+
+  icon : {
+    width : 20,
+    textAlign : "left"
+  },
+
+  label : { flex : 1 }
+}
 
 
 export default class Item extends Component {
@@ -14,10 +49,27 @@ export default class Item extends Component {
 
     super(props)
 
-    this.state = { collapsed : true }
+    this.state = {
+      collapsed : true,
+      hover : false
+    }
 
     this.toggle = this.toggle.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleMouseOver = this.handleMouseOver.bind(this)
+    this.handleMouseOut = this.handleMouseOut.bind(this)
+
+  }
+
+  handleMouseOver() {
+
+    this.setState({ hover : true })
+
+  }
+
+  handleMouseOut() {
+
+    this.setState({ hover : false })
 
   }
 
@@ -64,7 +116,7 @@ export default class Item extends Component {
       <Intl
         text={ this.props.label }
         ucfirst
-        className={ classNames.label }
+        style={ styles.label }
       />
     )
 
@@ -76,11 +128,9 @@ export default class Item extends Component {
 
     if (icon && typeof icon === "object") {
 
-      const className = classNames.icon + (icon.props.className ? " " + icon.props.className : "")
+      return React.cloneElement(icon, { style : { ...styles.icon, ...icon.props.style } })
 
-      return React.cloneElement(icon, { className })
-
-    } else return <span className={ classNames.icon }>{ icon }</span>
+    } else return <span style={ styles.icon }>{ icon }</span>
 
   }
 
@@ -102,13 +152,12 @@ export default class Item extends Component {
 
   }
 
-  getClassNameLink() {
+  getStyleLink() {
 
-    let className = classNames.link + " " + (this.props.dark ? classNames.dark : classNames.light)
+    const { dark } = this.props
+    const { hover } = this.state
 
-    if (this.props.className) className += " " + this.props.className
-
-    return className
+    return { ...styles.link, ...styles[(dark ? "dark" : "light") + (hover ? "Hover" : "")] }
 
   }
 
@@ -123,7 +172,7 @@ export default class Item extends Component {
       if (link.indexOf("http") === 0) {
 
         return (
-          <a href={ link } className={ this.getClassNameLink() } onClick={ onClick }>
+          <a href={ link } onClick={ onClick } style={ this.getStyleLink() }>
             { spanIcon } { label }
           </a>
         )
@@ -131,7 +180,7 @@ export default class Item extends Component {
       } else {
 
         return (
-          <Link to={ link } className={ this.getClassNameLink() } onClick={ onClick }>
+          <Link to={ link } style={ this.getStyleLink() } onClick={ onClick }>
             { spanIcon } { label }
           </Link>
         )
@@ -141,7 +190,7 @@ export default class Item extends Component {
     } else {
 
       return (
-        <span role="button" className={ this.getClassNameLink() } onClick={ this.handleClick }>
+        <span role="button" style={ this.getStyleLink() } onClick={ this.handleClick }>
           { spanIcon } { label }
         </span>
       )
@@ -162,7 +211,7 @@ export default class Item extends Component {
       if (link.indexOf("http") === 0) {
 
         return (
-          <a href={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
+          <a href={ link } onClick={ this.handleClick } style={ this.getStyleLink() }>
             { spanIcon } { label } { chevron }
           </a>
         )
@@ -170,7 +219,7 @@ export default class Item extends Component {
       } else {
 
         return (
-          <Link to={ link } onClick={ this.handleClick } className={ this.getClassNameLink() }>
+          <Link to={ link } onClick={ this.handleClick } style={ this.getStyleLink() }>
             { spanIcon } { label } { chevron }
           </Link>
         )
@@ -180,12 +229,26 @@ export default class Item extends Component {
     } else {
 
       return (
-        <span role="button" onClick={ this.handleClick } className={ this.getClassNameLink() }>
+        <span role="button" onClick={ this.handleClick } style={ this.getStyleLink() }>
           { spanIcon } { label } { chevron }
         </span>
       )
 
     }
+
+  }
+
+  componentDidMount() {
+
+    this.node.addEventListener("mouseover", this.handleMouseOver)
+    this.node.addEventListener("mouseout", this.handleMouseOut)
+
+  }
+
+  componentWillUnmount() {
+
+    this.node.removeEventListener("mouseover", this.handleMouseOver)
+    this.node.removeEventListener("mouseout", this.handleMouseOut)
 
   }
 
@@ -206,7 +269,7 @@ export default class Item extends Component {
     }
 
     return (
-      <li className={ classNames.li }>
+      <li style={ styles.li } ref={ node => this.node = node }>
         { link }
         { collapse }
       </li>

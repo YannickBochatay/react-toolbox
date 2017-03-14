@@ -2,7 +2,7 @@ import React, { PropTypes } from "react"
 import { connect } from "react-redux"
 import Glyphicon from "react-bootstrap/lib/Glyphicon"
 import { STATE_PROPERTY, toggleDrawer } from "./ducks"
-import { STATE_PROPERTY as INTL_PROPERTY } from "components/Intl/ducks"
+import { STATE_PROPERTY as INTL_PROPERTY } from "../Intl/ducks"
 
 export const Icon = props => (
   <Glyphicon { ...props } glyph={ props.open ? "remove" : "menu-hamburger" }/>

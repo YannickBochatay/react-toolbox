@@ -1,8 +1,8 @@
 import React, { PropTypes } from "react"
 import BsModal from "react-bootstrap/lib/Modal"
-import Modal from "components/Modal"
+import Modal from "../Modal"
 import Button from "react-bootstrap/lib/Button"
-import Intl from "components/Intl"
+import Intl from "../Intl"
 
 
 class Confirm extends Modal {
